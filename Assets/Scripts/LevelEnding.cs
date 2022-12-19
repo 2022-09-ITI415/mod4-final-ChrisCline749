@@ -19,12 +19,13 @@ public class LevelEnding : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
+        Debug.Log("Exit collision detected");
         if (collision.gameObject.tag == "Player")
         {
             levelEndText.SetActive(true);
-            Invoke("levelEnd()", 3);
+            Invoke("levelEnd", 3f);
 
         }
     }
