@@ -6,6 +6,7 @@ public class GameControler : MonoBehaviour
 {
     public GameObject door1;
     public GameObject door2;
+    public GameObject windSound;
 
     public float easing = 0.05f;
     public int chipCount;
@@ -18,6 +19,7 @@ public class GameControler : MonoBehaviour
     {
         chipCount = 0;
         activeDoor = null;
+        windSound.SetActive(false);
     }
 
     // Update is called once per frame
@@ -37,6 +39,7 @@ public class GameControler : MonoBehaviour
         if (chipCount == 1)
         {
             doorOpen(door1);
+            windSound.SetActive(true);
         }
         else if (chipCount == 2)
         {
