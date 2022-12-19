@@ -7,6 +7,7 @@ public class GameControler : MonoBehaviour
     public GameObject door1;
     public GameObject door2;
     public GameObject windSound;
+    public GameObject pickupSound;
 
     public float easing = 0.05f;
     public int chipCount;
@@ -20,6 +21,7 @@ public class GameControler : MonoBehaviour
         chipCount = 0;
         activeDoor = null;
         windSound.SetActive(false);
+        pickupSound.SetActive(false);
     }
 
     // Update is called once per frame
@@ -36,6 +38,8 @@ public class GameControler : MonoBehaviour
     {
         Debug.Log("PickUpEvent fired");
 
+        pickupSound.SetActive(true);
+
         if (chipCount == 1)
         {
             doorOpen(door1);
@@ -45,6 +49,8 @@ public class GameControler : MonoBehaviour
         {
             doorOpen(door2);
         }
+
+        Invoke("DisablePickupSound", 3f);
     }
 
     public void doorOpen(GameObject door)
@@ -58,5 +64,10 @@ public class GameControler : MonoBehaviour
         activeDoor = door;
 
         Debug.Log("x: " + destination.x + "   y: " + destination.y + "   z: " + destination.z);
+    }
+
+    void DisablePickupSound()
+    {
+        pickupSound.SetActive(false);
     }
 }
